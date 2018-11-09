@@ -1,9 +1,11 @@
-let icons = [`<i class="far fa-angry fa-4x"></i>`, `<i class="far fa-dizzy fa-4x"></i>`, `<i class="far fa-grin-stars fa-4x"></i>`, `<i class="far fa-frown fa-4x"></i>`, 
-            `<i class="far fa-grin-tears fa-4x"></i>`, `<i class="far fa-grin-tongue fa-4x"></i>`, `<i class="far fa-flushed fa-4x"></i>`, `<i class="far fa-kiss fa-4x"></i>`,
-            `<i class="far fa-angry fa-4x"></i>`, `<i class="far fa-dizzy fa-4x"></i>`, `<i class="far fa-grin-stars fa-4x"></i>`, `<i class="far fa-frown fa-4x"></i>`, 
-            `<i class="far fa-grin-tears fa-4x"></i>`, `<i class="far fa-grin-tongue fa-4x"></i>`, `<i class="far fa-flushed fa-4x"></i>`, `<i class="far fa-kiss fa-4x"></i>`]
+let icons = [`<i class="fa-angry fa-4x far"></i>`, `<i class="fa-dizzy fa-4x far"></i>`, `<i class="fa-grin-stars fa-4x far"></i>`, `<i class="fa-frown fa-4x far"></i>`, 
+            `<i class="fa-grin-tears fa-4x far"></i>`, `<i class="fa-grin-tongue fa-4x far"></i>`, `<i class="fa-flushed fa-4x far"></i>`, `<i class="fa-kiss fa-4x far"></i>`,
+            `<i class="fa-angry fa-4x far"></i>`, `<i class="fa-dizzy fa-4x far"></i>`, `<i class="fa-grin-stars fa-4x far"></i>`, `<i class="fa-frown fa-4x far"></i>`, 
+            `<i class="fa-grin-tears fa-4x far"></i>`, `<i class="fa-grin-tongue fa-4x far"></i>`, `<i class=" fa-flushed fa-4x far"></i>`, `<i class=" fa-kiss fa-4x far"></i>`]
 let i, j, k, tds;
 let compare = [];
+let turns = 0;
+let score = 9;
 
 //Shuffle image array
 function shuffle(icons) {
@@ -67,17 +69,71 @@ function listenForClick() {
 
 //Check for match
 function checkMatch() {
-    //console.log(this.firstChild.classList);
     this.firstChild.classList.remove("hide");
-    compare.push(this.innerHTML);
-    if (compare.length === 2) {
-        if (compare[0].innerHTML != compare[1].innerHTML) {
-            //Need to add logic to compare and flip
+    compare.push(this.firstChild);
+
+    if (compare.length === 2) {  
+        turns += 1;    
+        //Remove clicks from other cards    
+        for (i = 0; i < icons.length; i++) {
+            tds[i].removeEventListener("click", checkMatch);
         }
+
+        //Match
+        if (compare[0].className === compare[1].className) { 
+            //Add animation 
+            /*         
+            setTimeout(function() {
+                compare[0].classList.add("animated", "flash");
+                compare[1].classList.add("animated", "flash");              
+            }, 500)
+            */
+            //Reset array to zero add event listeners back to cards
+            setTimeout(function() {
+                compare = [];
+                listenForClick()
+            }, 1500);
+        } 
+
+        //No match    
+        else {
+            score -= 1;
+            //Add animation 
+            /*
+            setTimeout(function() {
+                compare[0].classList.add("animated", "flash");
+                compare[1].classList.add("animated", "flash");
+            }, 500);
+            */
+            //Reset array to zero add event listeners back to cards
+            setTimeout(function() {
+                compare[0].classList.add("hide");
+                compare[1].classList.add("hide");
+                removeStar(); 
+                compare = [];
+                listenForClick()
+            }, 1500); 
+
+        }
+        console.log(score)
     }
+}
+
+//Remove star
+function removeStar() {
+    let stars = document.querySelectorAll(".fa-star");
+    if (score === 6) {
+        stars[0].classList.add("hide");
+    } else if (score === 3) {
+        stars[1].classList.add("hide");
+    } else if (score === 0) {
+        stars[2].classList.add("hide");
+    } 
 }
 
 shuffle(icons);
 createGameboard();
+
+
 
 

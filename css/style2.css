@@ -9,7 +9,6 @@ body, html {
 .fas {
     display: flex;
     flex-direction: column;
-    align-self: center;
     color: #FFBC42;
 }
 
@@ -44,6 +43,11 @@ p {
     min-height: 75px;
 }
 
+.stars {
+  min-width: 125px;
+  align-self: center;
+}
+
 table {
     width: auto;
     height: auto;
@@ -62,91 +66,3 @@ td {
 
 
  { border: solid black 1px;}
-
-  /*
-  button {
-    padding: 5px 10px;
-    margin-left: 50px;
-    font-family: 'Bowlby One SC', cursive;
-    font-size: 1.5em;
-  }
-  
-  .card {
-    display: grid;
-    border-radius: 10px;
-    background-color: #FFBC42;
-  }
-  
-  .flex {
-    display: flex;
-    align-items: center;
-  }
-  
-  .game {
-    width: auto;
-    display: grid;
-    grid-template-columns: 125px 125px 125px 125px;
-    grid-template-rows: 125px 125px 125px 125px;
-    grid-gap: 20px;
-    margin: 25px;
-    padding: 20px;
-    background-color: #D81159;
-  }
-  
-
-  
-  .hide {
-    display: none !important;
-  }
-  
-  i {
-    color: #FFBC42;
-  }
-  
-  img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .inline {
-    display: inline;
-  }
-  
-  .modal {
-    width: 100%;
-    height: auto;
-    background-color: #11BDD8;
-    position: absolute;
-    top: 50%;
-    z-index: 100;
-  }
-  
-  .outer-container {
-    width: 100%;
-    max-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  p {
-    font-family: 'Bowlby One SC', cursive;
-    font-size: 1.5em;
-    text-align: center;
-  }
-  
-  .up-card {
-    font-size: 2em;
-    justify-self: center;
-    align-self: center;
-  }
-  
-  .score {
-    min-width: 250px;
-    height: 25px;
-  }
-  
-   {
-    border: solid black 1px;
-  }
-  */
