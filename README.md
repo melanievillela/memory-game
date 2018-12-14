@@ -1,4 +1,4 @@
-# memory-game
+# Memory Game
 
 <strong>Intro:</strong><br>
 This is a simple memory game. 
