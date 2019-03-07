@@ -88,10 +88,8 @@
     function checkMatch() {
         this.firstChild.classList.remove("hide");
         compare.push(this.firstChild);
-        console.log(this);
 
         if (compare.length === 2) {  
-            console.log(compare);
             turns += 1;    
             //Remove clicks from other cards    
             for (i = 0; i < icons.length; i++) {
